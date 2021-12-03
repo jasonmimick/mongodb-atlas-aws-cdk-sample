@@ -17,14 +17,14 @@ class MongodbAtlasAwsCdkSampleStack(cdk.Stack):
 
     def first_org_id(self,public,private):
         print(f"-- first_org_id public={public}")
-        print(f"-- first_org_id private={private}")
+        #print(f"-- first_org_id private={private}")
         url = "https://cloud.mongodb.com/api/atlas/v1.0/orgs"
         response= requests.get(url,
                                auth=HTTPDigestAuth(public,private))
-        print(f"fetch_orgs response={response}")
+        #print(f"fetch_orgs response={response}")
         response.raise_for_status()
         orgs = response.json()
-        print(f"orgs={orgs}")
+        #print(f"orgs={orgs}")
         org_id = orgs['results'][0]['id']
         return org_id
 
@@ -39,15 +39,15 @@ class MongodbAtlasAwsCdkSampleStack(cdk.Stack):
         #     visibility_timeout=cdk.Duration.seconds(300),
         # )
         project_name = str(cdk.Stack.stack_name)
-        print(f"project_name={project_name}")
+        #print(f"project_name={project_name}")
 
         public_key = self.node.try_get_context("atlas_public_key")
         private_key = self.node.try_get_context("atlas_private_key")
 
-        print(f"public_key={public_key}")
+        #print(f"public_key={public_key}")
         # Look up the org_id from the with the key; pick first one.
         org_id=self.first_org_id(public_key, private_key)
-        print(f"org_id={org_id}")
+        #print(f"org_id={org_id}")
         project = cdk.CfnResource(self, project_name,
                 type="MongoDB::Atlas::Project",
                 properties={
@@ -59,6 +59,6 @@ class MongodbAtlasAwsCdkSampleStack(cdk.Stack):
                   "Name": project_name 
                 }
         )
-        print(f"project={project}")
+        #print(f"project={project}")
 
 
