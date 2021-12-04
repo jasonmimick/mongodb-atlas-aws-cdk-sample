@@ -1,58 +1,22 @@
+#MongoDB Atlas AWS CDK Sample
 
-# Welcome to your CDK Python project!
+This is a first start example of how you can use CDN Level 1 constructs with the MongoDB Atlas AWS CloudFormation resources.
 
-This is a blank project for Python development with CDK.
+It was generated from `cdk init app --language python`.
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+There is 1 example stack which creates an Atlas Project.
 
-This project is set up like a standard Python project.  The initialization
-process also creates a virtualenv within this project, stored under the `.venv`
-directory.  To create the virtualenv it assumes that there is a `python3`
-(or `python` for Windows) executable in your path with access to the `venv`
-package. If for any reason the automatic creation of the virtualenv fails,
-you can create the virtualenv manually.
+You need to pass in your MongoDB Atlas APIKEY via context:
 
-To manually create a virtualenv on MacOS and Linux:
+```bash
+cdk deploy --context atlas_public_key=${ATLAS_PUBLIC_KEY} --context atlas_private_key=${ATLAS_PRIVATE_KEY} --context project_name=${YOUR_PROJECT_NAME}
+mongodb-cdk-cdk1: deploying...
+mongodb-cdk-cdk1: creating CloudFormation changeset...
 
-```
-$ python3 -m venv .venv
-```
+ ✅  mongodb-cdk-cdk1
 
-After the init process completes and the virtualenv is created, you can use the following
-step to activate your virtualenv.
-
-```
-$ source .venv/bin/activate
+Stack ARN:
+arn:aws:cloudformation:us-east-1:466197078724:stack/mongodb-cdk-cdk1/771ec470-5498-11ec-8373-0a596eda02f3
 ```
 
-If you are a Windows platform, you would activate the virtualenv like this:
-
-```
-% .venv\Scripts\activate.bat
-```
-
-Once the virtualenv is activated, you can install the required dependencies.
-
-```
-$ pip install -r requirements.txt
-```
-
-At this point you can now synthesize the CloudFormation template for this code.
-
-```
-$ cdk synth
-```
-
-To add additional dependencies, for example other CDK libraries, just add
-them to your `setup.py` file and rerun the `pip install -r requirements.txt`
-command.
-
-## Useful commands
-
- * `cdk ls`          list all stacks in the app
- * `cdk synth`       emits the synthesized CloudFormation template
- * `cdk deploy`      deploy this stack to your default AWS account/region
- * `cdk diff`        compare deployed stack with current state
- * `cdk docs`        open CDK documentation
-
-Enjoy!
+It's still not clear how to pass the stack name into the cdk to make it the same as the Atlas project name.
