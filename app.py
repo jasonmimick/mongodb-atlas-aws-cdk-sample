@@ -14,7 +14,9 @@ from mongodb_atlas_aws_cdk_sample.mongodb_atlas_aws_cdk_sample_stack import Mong
 
 app = core.App()
 
-stack = MongodbAtlasAwsCdkSampleStack(app, "MongodbAtlasAwsCdkSampleStack",
+stack_name = os.getenv("STACK_NAME")
+print(f"stack_name={stack_name}")
+stack = MongodbAtlasAwsCdkSampleStack(app, f"mongodb-cdk-{stack_name}",
     # If you don't specify 'env', this stack will be environment-agnostic.
     # Account/Region-dependent features and context lookups will not work,
     # but a single synthesized template can be deployed anywhere.

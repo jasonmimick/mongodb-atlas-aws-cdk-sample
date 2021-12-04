@@ -38,8 +38,9 @@ class MongodbAtlasAwsCdkSampleStack(cdk.Stack):
         #     self, "MongodbAtlasAwsCdkSampleQueue",
         #     visibility_timeout=cdk.Duration.seconds(300),
         # )
-        project_name = str(cdk.Stack.stack_name)
-        #print(f"project_name={project_name}")
+        #project_name = str(cdk.Stack.stack_name)
+        project_name = self.node.try_get_context("project_name")
+        print(f"project_name={project_name}")
 
         public_key = self.node.try_get_context("atlas_public_key")
         private_key = self.node.try_get_context("atlas_private_key")
