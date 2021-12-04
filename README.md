@@ -1,4 +1,4 @@
-#MongoDB Atlas AWS CDK Sample
+# MongoDB Atlas AWS CDK Sample
 
 This is a first start example of how you can use CDN Level 1 constructs with the MongoDB Atlas AWS CloudFormation resources.
 
